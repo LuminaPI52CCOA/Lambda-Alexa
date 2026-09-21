@@ -1,0 +1,7 @@
+aws_region       = "us-east-1"
+function_name    = "lumina-alexa-skill"
+backend_url      = "http://SEU_IP_PUBLICO_EC2:8080"
+service_email    = "john@doe.com"
+service_password = "sua_senha_aqui"
+alexa_skill_id   = "amzn1.ask.skill.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+log_retention_days = 14

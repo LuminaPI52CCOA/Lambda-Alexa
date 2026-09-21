@@ -1,0 +1,108 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "lumina",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "cancelar",
+            "esquece"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "ajuda",
+            "o que você pode fazer",
+            "como funciona"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "parar",
+            "sair",
+            "tchau",
+            "fechar"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "ProximaConsultaIntent",
+          "slots": [],
+          "samples": [
+            "qual a minha próxima consulta",
+            "qual a próxima consulta",
+            "quem é a próxima consulta",
+            "quem é o próximo paciente",
+            "quem eu atendo agora",
+            "quem é o próximo atendimento",
+            "qual meu próximo paciente",
+            "minha próxima consulta",
+            "próxima consulta",
+            "próximo paciente"
+          ]
+        },
+        {
+          "name": "ConsultasHojeIntent",
+          "slots": [],
+          "samples": [
+            "quantas consultas eu tenho hoje",
+            "quantas consultas tenho hoje",
+            "qual a minha agenda de hoje",
+            "qual minha agenda de hoje",
+            "como está meu dia",
+            "como está minha agenda hoje",
+            "quais consultas eu tenho hoje",
+            "resumo do meu dia",
+            "resumo de hoje",
+            "minha agenda de hoje"
+          ]
+        },
+        {
+          "name": "AlertaAnamneseIntent",
+          "slots": [],
+          "samples": [
+            "o próximo paciente tem alguma alergia",
+            "o próximo paciente tem alergia",
+            "alerta médico do próximo paciente",
+            "quais as restrições do próximo paciente",
+            "o paciente tem alguma observação médica",
+            "alergias do paciente",
+            "ficha médica do próximo paciente",
+            "alertas médicos",
+            "alguma alergia do paciente"
+          ]
+        },
+        {
+          "name": "VincularDispositivoIntent",
+          "slots": [
+            {
+              "name": "codigo",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "vincular código {codigo}",
+            "meu código é {codigo}",
+            "vincular conta com código {codigo}",
+            "vincular {codigo}",
+            "conectar código {codigo}",
+            "conectar conta com código {codigo}",
+            "o código é {codigo}",
+            "código {codigo}"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

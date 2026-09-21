@@ -1,0 +1,26 @@
+{
+  "name": "lumina-alexa-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda da Skill Alexa para o sistema Lumina Odontológica",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "alexa",
+    "ask-sdk",
+    "aws-lambda",
+    "lumina",
+    "spring-boot"
+  ],
+  "author": "Lumina Odontológica Team",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.41.0",
+    "axios": "^1.7.9",
+    "axios-cookiejar-support": "^5.0.5",
+    "tough-cookie": "^4.1.4"
+  }
+}
