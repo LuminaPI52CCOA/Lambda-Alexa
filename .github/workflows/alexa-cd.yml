@@ -1,0 +1,65 @@
+name: "Alexa Skill CD (Deploy to AWS Lambda)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      function_name:
+        description: "Nome da Funcao Lambda criada na AWS"
+        required: true
+        default: "lumina-alexa-skill-dev"
+        type: string
+      aws_access_key_id:
+        description: "AWS Access Key ID (Sessao temporaria do Learner Lab)"
+        required: true
+        type: string
+      aws_secret_access_key:
+        description: "AWS Secret Access Key"
+        required: true
+        type: string
+      aws_session_token:
+        description: "AWS Session Token"
+        required: true
+        type: string
+      aws_region:
+        description: "Regiao AWS"
+        required: true
+        default: "us-east-1"
+        type: string
+
+jobs:
+  deploy:
+    name: "Empacotar e Atualizar Codigo da Lambda"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 20 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "Lambda-Alexa/package-lock.json"
+
+      - name: Instalar Dependencias de Producao
+        run: npm ci --omit=dev
+
+      - name: Gerar Pacote ZIP de Distribuicao
+        run: |
+          mkdir -p dist
+          zip -r dist/lambda.zip . -x "*.git*" "terraform/*" "test/*" "dist/*" ".github/*"
+
+      - name: Autenticar na AWS (Credenciais Efemeras do Lab)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ inputs.aws_access_key_id }}
+          aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
+          aws-session-token: ${{ inputs.aws_session_token }}
+          aws-region: ${{ inputs.aws_region }}
+
+      - name: Atualizar Codigo da Funcao Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name "${{ inputs.function_name }}" \
+            --zip-file fileb://dist/lambda.zip
+          echo "✅ Codigo da Lambda atualizado com sucesso!"
