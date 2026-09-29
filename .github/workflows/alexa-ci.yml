@@ -2,7 +2,7 @@ name: "Alexa Skill CI (Unit Tests)"
 
 on:
   push:
-    branches: [main, develop, feat/lambda-alexa]
+    branches: [main, develop, feat/ci-cd, feat/lambda-alexa]
     paths:
       - "src/**"
       - "test/**"
@@ -10,7 +10,7 @@ on:
       - "package-lock.json"
       - ".github/workflows/alexa-*.yml"
   pull_request:
-    branches: [main, develop, feat/lambda-alexa]
+    branches: [main, develop, feat/ci-cd, feat/lambda-alexa]
     paths:
       - "src/**"
       - "test/**"
@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: "Lambda-Alexa/package-lock.json"
+          cache-dependency-path: "package-lock.json"
 
       - name: Instalar Dependencias
         run: npm ci
