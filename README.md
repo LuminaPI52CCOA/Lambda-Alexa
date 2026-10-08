@@ -57,11 +57,16 @@ Lambda-Alexa/
 
 ---
 
-## 3. Como Provisionar com Terraform (AWS Academy)
+## 3. Provisionamento da Infraestrutura
 
-Como você utiliza o **AWS Academy Learner Lab**, a criação de novas IAM Roles é restrita por SCPs da AWS. O Terraform deste projeto utiliza diretamente a role pré-existente **`LabRole`**.
+A função Lambda e suas permissões de trigger da Alexa podem ser provisionadas de duas formas:
 
-### Passo a Passo:
+### Opção A: Provisionamento Central Automatizado (Recomendado via CI/CD)
+No repositório central [`Infraestrutura`](../Infraestrutura), o módulo `modules/lambda_alexa` já é instanciado automaticamente durante o workflow **Terraform Infrastructure Deploy/Destroy** nos ambientes `dev` e `prod`. O ARN da Lambda é impresso nos outputs do Terraform ao final da execução.
+
+### Opção B: Provisionamento Isolado Local (Testes Rápidos)
+Como o projeto utiliza o **AWS Academy Learner Lab**, a criação de novas IAM Roles é restrita por SCPs da AWS. O manifesto Terraform desta pasta utiliza diretamente a role pré-existente **`LabRole`**.
+
 1. Abra o terminal na pasta `terraform`:
    ```bash
    cd terraform
@@ -70,7 +75,7 @@ Como você utiliza o **AWS Academy Learner Lab**, a criação de novas IAM Roles
    ```bash
    cp terraform.tfvars.example terraform.tfvars
    ```
-3. Edite o arquivo `terraform.tfvars` informando o IP público da sua EC2:
+3. Edite o arquivo `terraform.tfvars` informando o IP público da sua EC2 ou DNS do Load Balancer:
    ```hcl
    aws_region       = "us-east-1"
    function_name    = "lumina-alexa-skill"
@@ -83,7 +88,7 @@ Como você utiliza o **AWS Academy Learner Lab**, a criação de novas IAM Roles
    terraform init
    terraform apply
    ```
-5. Guarde o valor do output **`lambda_arn`** gerado ao final.
+5. Guarde o valor do output **`lambda_arn`** gerado ao final para vincular no Alexa Developer Console.
 
 ---
 
