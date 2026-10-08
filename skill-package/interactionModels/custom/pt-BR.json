@@ -92,10 +92,18 @@
           ],
           "samples": [
             "vincular código {codigo}",
+            "vincular o código {codigo}",
+            "vincule código {codigo}",
+            "vincule o código {codigo}",
             "meu código é {codigo}",
             "vincular conta com código {codigo}",
+            "vincule conta com código {codigo}",
             "vincular {codigo}",
+            "vincule {codigo}",
             "conectar código {codigo}",
+            "conectar o código {codigo}",
+            "conecte código {codigo}",
+            "conecte o código {codigo}",
             "conectar conta com código {codigo}",
             "o código é {codigo}",
             "código {codigo}"
